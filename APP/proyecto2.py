@@ -33,11 +33,11 @@ with tab1:
 
     resumen = {}
 
-    resumen['Medias hambre'] = df.groupby(['pais']).agg({'hambre':'mean'})
-    resumen['Medias cultivos'] = df.groupby(['año']).agg({'cultivos':'mean'})
-    resumen['Medias electricidad'] = df.groupby(['año']).agg({'electricidad':'mean'})
-    resumen['Medias desempleo'] = df.groupby(['pais']).agg({'desempleo':'mean'})
-    resumen['Medias poblacion'] = df.groupby(['pais']).agg({'poblacion':'mean'})
+    resumen['Medias hambre'] = bienestar.groupby(['pais']).agg({'hambre':'mean'})
+    resumen['Medias cultivos'] = bienestar.groupby(['año']).agg({'cultivos':'mean'})
+    resumen['Medias electricidad'] = bienstar.groupby(['año']).agg({'electricidad':'mean'})
+    resumen['Medias desempleo'] = bienestar.groupby(['pais']).agg({'desempleo':'mean'})
+    resumen['Medias poblacion'] = bienestar.groupby(['pais']).agg({'poblacion':'mean'})
     num_tables = len(resumen)
     num_columns = 5
     num_rows = (num_tables + num_columns - 1) // num_columns
@@ -70,7 +70,7 @@ with tab1:
 
     years = bienestar['año'].unique()
     
-    columnas_numericas = df.select_dtypes(include=['number'])
+    columnas_numericas = bienestar.select_dtypes(include=['number'])
     num_columns = 4 
     num_rows = (len(years) + num_columns - 1) // num_columns
     for i in range(num_rows):
@@ -81,8 +81,8 @@ with tab1:
                 year = years[index]
                 with cols[j]:
                     st.subheader(f"Mapa de Calor para el Año {year}")
-                    df_year = columnas_numericas[columnas_numericas['año'] == year]
-                    corr_matrix = df_year.corr()
+                    bienestar_year = columnas_numericas[columnas_numericas['año'] == year]
+                    corr_matrix = bienestar_year.corr()
                     fig, ax = plt.subplots()
                     sns.heatmap(corr_matrix, annot=True, cmap="Spectral", linewidths=0.5)
                     st.pyplot(fig)
