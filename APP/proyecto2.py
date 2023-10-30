@@ -277,8 +277,163 @@ with tab3:
     evidencia suficiente para afirmar una diferencia significativa entre los niveles de población entre Colombia y Norteamerica.
     """
     st.text(texto_simple)
+    with tab4:
 
-with tab4:
+    st.title("Mapa General")
+    fig, ax = plt.subplots(1, 1, figsize=(10, 10))
+    bienestar2.plot(
+    cmap="plasma", 
+    ax=ax)
+    ax.set_axis_off()
+    st.pyplot(fig)
+
+    st.divider()
+    fig, axs = plt.subplots(1, 5, figsize=(20, 4))
+    columns = ["electricidad", "desempleo", "poblacion", "cultivos", "hambre"]
+    titles = ["Acceso a la electricidad", "Desempleo total", "Población total", "Tierras cultivables", "Prevalencia de desnutrición"]
+
+    for i, (column, title) in enumerate(zip(columns, titles)):
+        ax = axs[i]
+        bienestar2.plot(
+            column=column,
+            scheme="Quantiles",
+            cmap="plasma",
+            legend=True,
+            legend_kwds={"fmt": "{:.0f}"},
+            ax=ax
+        )
+        ax.set_title(title)
+        ax.set_axis_off()
+    plt.tight_layout()
+    st.pyplot(fig)
+
+    st.divider()
+    st.subheader('Transformación por variables')
+    fig, axs = plt.subplots(2, 2, figsize=(12, 12))
+    axs = axs.flatten()
+    years = ["2002-2004", "2005-2009", "2010-2014", "2015-2019"]
+    bienestar2['año'] = bienestar2['año'].astype(int)
+    
+    for i, ax in enumerate(axs):
+        year_range = years[i]
+        start_year, end_year = map(int, year_range.split("-"))
+        desarrollo_años = bienestar2[(bienestar2['año'] >= start_year) & (bienestar2['año'] <= end_year)]
+    
+        desarrollo_años.plot(
+            column="poblacion",
+            scheme="Quantiles",
+            cmap="plasma",
+            legend=True,
+            legend_kwds={"fmt": "{:.0f}"},
+            ax=ax,
+        )
+    
+        ax.set_axis_off()
+        ax.set_title(f"Población de {year_range} en Países de América")
+    plt.suptitle("Variación de la población en América entre los años 2002 y 2019")
+    plt.tight_layout()
+    st.pyplot(fig)
+
+    texto_simple = """
+    Teniendo en cuenta el gráfico anterior podemos observar que de 2002 a 2019 Ecuador, México 
+    y Costa Rica registraban una población superior a la de otros países de la región, mientras
+    que para el periodo de 2005 a 2009 Paraguay tuvo un aumento en su población.Para el periodo 
+    del 2015 a 2019 la población en Venezuela disminuyó debido al aumento de la inflación, la 
+    cual alcanzo el punto más alto en la historia de este país. 
+    """
+    st.text(texto_simple)
+
+    st.divider()
+    fig, axs = plt.subplots(2, 2, figsize=(12, 12))
+    axs = axs.flatten()
+    years = ["2002-2004", "2005-2009", "2010-2014", "2015-2019"]
+    desarrollo_años = bienestar2[(bienestar2['año'] >= start_year) & (bienestar2['año'] <= end_year)]
+
+    for i, ax in enumerate(axs):
+    
+        year_range = years[i]
+        start_year, end_year = map(int, year_range.split("-"))
+        desarrollo_años = bienestar2[(bienestar2['año'] >= start_year) & (bienestar2['año'] <= end_year)]
+    
+        desarrollo_años.plot(
+            column="Desempleo",
+            scheme="Quantiles",
+            cmap="plasma",
+            legend=True,
+            legend_kwds={"fmt": "{:.0f}"},
+            ax=ax,
+        )
+    
+        ax.set_axis_off()
+        ax.set_title(f"Desempleo de {year_range} en países de América")
+    plt.suptitle("Comportamiento del desempleo en América entre los años 2002 y 2019")
+    plt.tight_layout()
+    st.pyplot(fig)
+
+    texto_simple = """
+    Con base en el gráfico, es posible observar que en el primer periodo de tiempo Venezuela presentó el 
+    indicador más alto en desempleo y Mexico, Peru, y Bolivia presentaron los más bajos, así mismo para el segundo periodo ( 2005-2009) 
+    se registra un aumento en desempleo en los paíss de la región a excepción de Argentina y Paraguay y Venezuela disminuyó sus índices.
+    Para los dos últimos periodos, en la mayoría de países de América del Sur se registra un aumento en el desempleo.
+    """
+    st.text(texto_simple)
+
+    st.divider()
+    fig, axs = plt.subplots(2, 2, figsize=(12, 12))
+    axs = axs.flatten()
+    years = ["2002-2004", "2005-2009", "2010-2014", "2015-2019"]
+    bienestar2['año'] = bienestar2['año'].astype(int)
+
+    for i, ax in enumerate(axs):
+        year_range = years[i]
+        start_year, end_year = map(int, year_range.split("-"))
+        desarrollo_años = bienestar2[(bienestar2['año'] >= start_year) & (bienestar2['año'] <= end_year)]
+    
+        desarrollo_años.plot(
+            column="hambre",
+            scheme="Quantiles",
+            cmap="plasma",
+            legend=True,
+            legend_kwds={"fmt": "{:.0f}"},
+            ax=ax,
+        )
+    
+        ax.set_axis_off()
+        ax.set_title(f"Nivel de desnutricón de {year_range} en Países de América")
+    plt.suptitle("Comportamiento de la desnutrición en América entre los años 2002 y 2019")
+    plt.tight_layout()
+    st.pyplot(fig)
+
+    texto_simple = """
+    En los 4 periodos, Canadá y Estados Unidos registraron los indices más bajos en cuanto a desnutrición,
+    por su parte Bolivia registró los niveles más altos, es importante destacar que Venezuela tuvo un 
+    cambio más abrupto entre los países de la región pasando de tener los indices más bajos a los más altos en desnutrición.
+    Finalmente, se observó que el único país de suramérica en tener niveles bajos de desnutrición fue Uruguay.  
+    """
+    
+with tab5:
+
+    st.title("Indicador")
+
+    texto_simple = """
+
+    Los mapas proporcionan una representación visual del nivel de bienestar en los países de América según los 
+    resultados del indicador elaborado. Además, en el análisis georreferenciado, se utilizaron los mismos 
+    intervalos de tiempo, lo que permite observar los cambios a lo largo de los años, desde 2002 hasta 2019.
+    Según este indicador, antes de la crisis financiera mundial de 2008, es decir, durante el período de 
+    2002-2007, los países de América con un mayor nivel de bienestar eran Estados Unidos y Canadá, mientras 
+    que Bolivia tenía el nivel más bajo. Durante y después de la crisis financiera, es decir, entre 2008 y 
+    2011, Canadá, Perú y Uruguay se destacaron como los países con un mayor nivel de bienestar, mientras que 
+    Colombia y Bolivia se encontraban entre los de menor bienestar. En el período de 2012 a 2015, Estados 
+    Unidos, Canadá y Perú seguían liderando en cuanto al bienestar, mientras que Colombia, Venezuela y Bolivia 
+    continuaban registrando resultados menos favorables. Finalmente, entre 2016 y 2019, Estados Unidos y Canadá 
+    mantenían su posición en la cima en términos de bienestar, pero Colombia, Ecuador, Venezuela y Paraguay 
+    experimentaron un deterioro en su bienestar general, lo que indica una tendencia preocupante en la región.
+    """
+    st.text(texto_simple)
+
+
+with tab6:
     x="""
     - Daniela Gonzalez
     - Sofia Gomez
