@@ -93,9 +93,11 @@ with tab1:
     entre el acceso de la población a la electricidad  y al desempleo, que ha mantenido una 
     correlación más alta de 0.8 a lo largo de todos los años.
     """
+    st.text(x)
+    
  with tab2:   
     st.subheader('Análisis gráfico')
-
+     
     fig_1 = px.scatter(bienestar, x="año", y="hambre", color="pais",
                  size='poblacion', hover_data=['hambre'])
     st.plotly_chart(fig_1)
