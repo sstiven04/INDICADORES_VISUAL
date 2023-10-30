@@ -277,8 +277,8 @@ with tab3:
     evidencia suficiente para afirmar una diferencia significativa entre los niveles de población entre Colombia y Norteamerica.
     """
     st.text(texto_simple)
-    with tab4:
-
+    
+with tab4:
     st.title("Mapa General")
     fig, ax = plt.subplots(1, 1, figsize=(10, 10))
     bienestar2.plot(
