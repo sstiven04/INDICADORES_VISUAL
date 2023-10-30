@@ -31,7 +31,7 @@ with tab1:
     """
     st.text(t)
 
-        resumen = {}
+    resumen = {}
 
     resumen['Medias hambre'] = df.groupby(['pais']).agg({'hambre':'mean'})
     resumen['Medias cultivos'] = df.groupby(['año']).agg({'cultivos':'mean'})
