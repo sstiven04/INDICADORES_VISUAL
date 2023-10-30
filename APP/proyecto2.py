@@ -86,13 +86,12 @@ with tab1:
                     fig, ax = plt.subplots()
                     sns.heatmap(corr_matrix, annot=True, cmap="Spectral", linewidths=0.5)
                     st.pyplot(fig)
-
- x= """
+    x= """
     El gráfico de calor muestra cómo las variables elegidas han interactuado a lo largo de 
     los años. Es evidente que estas interacciones han sido consistentes durante los 17 años,
-     y en su mayoría, las correlaciones entre ellas son bajas. La excepción es la relación 
-     entre el acceso de la población a la electricidad  y al desempleo, que ha mantenido una 
-     correlación más alta de 0.8 a lo largo de todos los años.
+    y en su mayoría, las correlaciones entre ellas son bajas. La excepción es la relación 
+    entre el acceso de la población a la electricidad  y al desempleo, que ha mantenido una 
+    correlación más alta de 0.8 a lo largo de todos los años.
     """
 
 
@@ -102,13 +101,11 @@ with tab1:
     fig_1 = px.scatter(bienestar, x="año", y="hambre", color="pais",
                  size='poblacion', hover_data=['hambre'])
     st.plotly_chart(fig_1)
- x= """
-
+    x= """
     En el gráfico anterior, se evidencia que en el caso de Venezuela, a pesar de ser un país 
     cuya población ha disminuido, la desnutricón ha aumentado exponencialmente desde el año 2014, 
     mientras que en el caso de Bolivia, un país el cual ha tenido una población bastante reducida 
     durante el periodo evaluado, ha logrado disminuir sus índices de desnutricón de forma significativa. 
-    
     """
 
     fig_2 = px.box(bienestar, x="año", y="electricidad")
