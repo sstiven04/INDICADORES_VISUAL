@@ -68,7 +68,7 @@ with tab1:
 
     st.subheader('Mosaico de Mapas de Calor')
 
-        years = bienestar['año'].unique()
+    years = bienestar['año'].unique()
     
     columnas_numericas = df.select_dtypes(include=['number'])
     num_columns = 4 
