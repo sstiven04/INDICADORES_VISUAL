@@ -95,7 +95,7 @@ with tab1:
     """
     st.text(x)
     
- with tab2:   
+with tab2:   
     st.subheader('Análisis gráfico')
      
     fig_1 = px.scatter(bienestar, x="año", y="hambre", color="pais",
@@ -150,7 +150,7 @@ with tab1:
     más han presentado avances, pues empezaron el 2002 debajo del promedio.
     """
 
-    with tab3:   
+with tab3:   
     st.subheader('Prueba de hipótesis')
 
     st.subheader('Variable #1: Tasa de desempleo')
@@ -278,7 +278,7 @@ with tab1:
     """
     st.text(texto_simple)
 
-with tab6:
+with tab4:
     x="""
     - Daniela Gonzalez
     - Sofia Gomez
