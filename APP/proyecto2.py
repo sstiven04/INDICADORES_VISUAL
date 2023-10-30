@@ -112,12 +112,12 @@ with tab2:
     fig_2.show()
     st.plotly_chart(fig_2)
 
-   x= """ 
-   En el presente gráfico podemos evidenciar que entre los años 2002 al 2007 existia una gran diferencia 
-   en el acceso a la electricicdad entre los países evaludos, lo que quiere decir que mientras unos hasta 
-   estaban empezando a implementar y mejorar sistemas de electricidad habian otros que probablemente ya 
-   llevaban varios años haciendo uso de esta.
-   """
+    x= """ 
+    En el presente gráfico podemos evidenciar que entre los años 2002 al 2007 existia una gran diferencia 
+    en el acceso a la electricicdad entre los países evaludos, lo que quiere decir que mientras unos hasta 
+    estaban empezando a implementar y mejorar sistemas de electricidad habian otros que probablemente ya 
+    llevaban varios años haciendo uso de esta.
+    """
 
     fig_3 = px.box(bienestar, x="año", y="desempleo")
     fig_3.show()
