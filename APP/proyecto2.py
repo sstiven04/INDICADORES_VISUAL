@@ -49,12 +49,8 @@ with tab1:
                 titulo, serie = list(resumen.items())[index]
                 with cols[j]:
                     st.subheader(f"{titulo}")
-                    st.dataframe(serie.reset_index()) 
-
-
-
- Textot="""
-
+                    st.dataframe(serie.reset_index())
+    Textot="""
     Se observa que para la variable de cultivos que evalua la cantidad de terrenos cultivables 
     para cada país, presenta un incremento año tras año en el periodo de tiempo evaluado (2002 - 2019);
     se evidencia también que es Bolivia uno de lo paises con mayor tasa de desnutrición del 19.7% sobre 
@@ -66,8 +62,7 @@ with tab1:
     a una media estimada del 99.12% en el año 2019, adicionalmente se observó que los pises con mayor 
     incemento en la población en la región fueron Costa Rica (90.73%), seguido de Ecuador (60.9%) y 
     Colombia (40.60%). Es importante mencionar que aunque durante dicho periodo aumentó la población 
-    para estos países el desempleo atacó a otros como fue el caso de Colombia, Brasil, Venezuela y Argentina. 
-    
+    para estos países el desempleo atacó a otros como fue el caso de Colombia, Brasil, Venezuela y Argentina.
     """
     st.text(Textot)
 
@@ -121,12 +116,10 @@ with tab1:
     st.plotly_chart(fig_2)
 
    x= """ 
-
    En el presente gráfico podemos evidenciar que entre los años 2002 al 2007 existia una gran diferencia 
    en el acceso a la electricicdad entre los países evaludos, lo que quiere decir que mientras unos hasta 
    estaban empezando a implementar y mejorar sistemas de electricidad habian otros que probablemente ya 
    llevaban varios años haciendo uso de esta.
-
    """
 
     fig_3 = px.box(bienestar, x="año", y="desempleo")
@@ -134,12 +127,10 @@ with tab1:
     st.plotly_chart(fig_3)
 
     x= """ 
-
     En el presente diagrama de cajas y bigotes en el cual se busca analizar el desempleo por años, se 
     encuentra una particularidad para el año 2002, pues se logra examinar que mientras unos países cuentan 
     con una tasa de desempleo baja, otros registran tasas significativamente altas. 
-
-   """
+    """
 
     fig_7 = px.scatter(bienestar, x="año", y="cultivos", color="pais",
                  size='poblacion', hover_data=['cultivos'])
@@ -147,23 +138,19 @@ with tab1:
     st.plotly_chart(fig_7)
 
     x= """ 
-
     En el gráfico de cultivos, es posible considerar que la tendencia de la mayoría de los países a cultivar 
     no cuenta con mayores variaciones, es decir que puede presentarse alguna actividad estable en las tierras 
     cultivables. Sin embargo, Uruguay y Paraguay son los países que más presentan variaciones en cultivos con los años.
-
-   """
+    """
    fig_8 = px.scatter(bienestar, x="año", y="electricidad", color="pais", symbol="pais")
    fig_8.show()
    st.plotly_chart(fig_8)
     
     x= """ 
-
     Para el diagrama de dispersión en electricidad, es importante identificar que el porcentaje mínimo alcanzado hasta 
     el último año (2019) supone un 95.08% de la población con acceso a electricidad, lo cual brinda un panorama positivo, 
     pues un buen número de la población tiene acceso a este servicio. Por otro lado, Bolivia y Perú son los países que
     más han presentado avances, pues empezaron el 2002 debajo del promedio.
-
     """
 
     with tab3:   
