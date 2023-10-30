@@ -10,7 +10,7 @@ import geopandas as gpd
 st.set_page_config(layout='wide')
 st.title("Indicador de Bienestar")
 bienestar = pd.read_csv('bienestar.csv')
-bienestar = gpd.read_file('bienestar.csv')
+bienestardf2 = gpd.read_file('bienestar.csv')
 
 
 
