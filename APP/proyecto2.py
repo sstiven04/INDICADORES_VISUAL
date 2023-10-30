@@ -139,9 +139,9 @@ with tab2:
     no cuenta con mayores variaciones, es decir que puede presentarse alguna actividad estable en las tierras 
     cultivables. Sin embargo, Uruguay y Paraguay son los países que más presentan variaciones en cultivos con los años.
     """
-   fig_8 = px.scatter(bienestar, x="año", y="electricidad", color="pais", symbol="pais")
-   fig_8.show()
-   st.plotly_chart(fig_8)
+    fig_8 = px.scatter(bienestar, x="año", y="electricidad", color="pais", symbol="pais")
+    fig_8.show()
+    st.plotly_chart(fig_8)
     
     x= """ 
     Para el diagrama de dispersión en electricidad, es importante identificar que el porcentaje mínimo alcanzado hasta 
