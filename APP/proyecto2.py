@@ -93,8 +93,6 @@ with tab1:
     entre el acceso de la población a la electricidad  y al desempleo, que ha mantenido una 
     correlación más alta de 0.8 a lo largo de todos los años.
     """
-
-
  with tab2:   
     st.subheader('Análisis gráfico')
 
